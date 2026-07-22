@@ -4,7 +4,7 @@
 
 <img src="assets/hero.png" alt="实习.skill / get-job.skill" width="100%" />
 
-<h3>双非也能拿大厂 offer —— 从改简历到面试，把你的真实背景，翻译成面试官想要的语言。</h3>
+<h3>从岗位调研、简历改写到分轮次面试准备，把真实背景翻译成面试官想要的语言。</h3>
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](LICENSE)
 [![Quality](https://github.com/agentenatalie/get-job.skill/actions/workflows/quality.yml/badge.svg)](https://github.com/agentenatalie/get-job.skill/actions/workflows/quality.yml)
