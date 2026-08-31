@@ -199,13 +199,15 @@ git clone https://github.com/agentenatalie/get-job.skill ~/.claude/skills/get-jo
 
 ---
 
+## Star History
+
 <div align="center">
 
-<a href="https://star-history.com/#agentenatalie/get-job.skill&Date">
+<a href="https://www.star-history.com/?repos=agentenatalie%2Fget-job.skill&amp;type=date&amp;legend=top-left">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=agentenatalie/get-job.skill&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=agentenatalie/get-job.skill&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=agentenatalie/get-job.skill&type=Date" width="80%" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=agentenatalie/get-job.skill&amp;type=date&amp;theme=dark&amp;legend=top-left&amp;sealed_token=IPQNwoGbipyXKiJOjhGyK6SrdFcSKjaoKamjrvnnvHCSB6MNzeqTQ6OBaX0Lfte5UtF7EDmsBr1nxfw5uzQCCdk8LlnPO8dfNsWPQEiCR8oIspVcaHHqIuAt28UyvoavKQAUSXAJ_n-McpeVM2-Z-vHo2hN0ogJINhKw5ujB8uKl9PfUexEyXnKsSZqL" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=agentenatalie/get-job.skill&amp;type=date&amp;legend=top-left&amp;sealed_token=IPQNwoGbipyXKiJOjhGyK6SrdFcSKjaoKamjrvnnvHCSB6MNzeqTQ6OBaX0Lfte5UtF7EDmsBr1nxfw5uzQCCdk8LlnPO8dfNsWPQEiCR8oIspVcaHHqIuAt28UyvoavKQAUSXAJ_n-McpeVM2-Z-vHo2hN0ogJINhKw5ujB8uKl9PfUexEyXnKsSZqL" />
+    <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=agentenatalie/get-job.skill&amp;type=date&amp;legend=top-left&amp;sealed_token=IPQNwoGbipyXKiJOjhGyK6SrdFcSKjaoKamjrvnnvHCSB6MNzeqTQ6OBaX0Lfte5UtF7EDmsBr1nxfw5uzQCCdk8LlnPO8dfNsWPQEiCR8oIspVcaHHqIuAt28UyvoavKQAUSXAJ_n-McpeVM2-Z-vHo2hN0ogJINhKw5ujB8uKl9PfUexEyXnKsSZqL" width="80%" />
   </picture>
 </a>
 
