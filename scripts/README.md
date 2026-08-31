@@ -1,3 +1,5 @@
+**简体中文** | [English](README_EN.md)
+
 # scripts
 
 ## generate_resume.py
@@ -34,7 +36,7 @@ python3 generate_resume.py my_resume.json -o 张三_某公司_产品实习.docx
 
 ### 输入 JSON 结构
 
-见同目录 `sample_resume.json`。骨架：
+见同目录 `sample_resume.json`；英文输入见 `sample_resume.en.json`。骨架：
 
 ```json
 {
@@ -66,6 +68,7 @@ python3 generate_resume.py my_resume.json -o 张三_某公司_产品实习.docx
 ```
 
 字段说明：
+- 顶层 `locale` 设为 `"en"` 时使用英文标签和英文容错占位；省略时仍默认使用中文
 - `entries[].title` 建议填写；缺失时脚本会用占位标题并输出 warning；`meta`（右对齐时间/地点）、`subtitle`（职位/方向）、`bullets` 可选
 - section 加 `"type": "skills"` 时用 `items`（`{category, content}` 或纯字符串列表），否则用 `entries`
 - 经历可少量、自然地加入迁移叙事（见改简历框架），脚本不强制
@@ -100,6 +103,7 @@ python3 quality_check.py ../examples/文科投AICoding ../examples/文科生投�
 脚本会检查：
 - Markdown 里是否泄漏 `迁移句:`、`旧版`、`保留作参考`、`半成品` 等红线词
 - `面试准备/` 是否包含 `00-总览.md`、`01-简历bullet逐条深挖.md`、`02-表达状态与自我介绍.md`、`99-面后复盘题库.md`
+- 英文 `interview-prep/` 是否包含对应的英文固定文件、公开 marker 和从 `03-` 开始的轮次文件
 - 轮次文件是否从 `03-` 开始，避免和固定通用文件抢编号
 - 核心文件是否含有必要结构标记，如轮次地图、风险地图、关键字卡、项目逐字稿、复盘题库
 

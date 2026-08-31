@@ -20,20 +20,66 @@ BANNED_PATTERNS = [
     r"旧脚本版",
     r"旧排版版",
     r"半成品",
+    r"(?i)transfer sentence\s*:",
+    r"(?i)transfer note\s*:",
+    r"(?i)transferability\s*:",
+    r"(?i)production-grade round-by-round version",
+    r"(?i)production version",
+    r"(?i)kept for reference",
+    r"(?i)legacy (?:script|layout) version",
+    r"(?i)half-finished",
 ]
 
-REQUIRED_INTERVIEW_FILES = [
-    "00-总览.md",
-    "01-简历bullet逐条深挖.md",
-    "02-表达状态与自我介绍.md",
-    "99-面后复盘题库.md",
-]
+INTERVIEW_LAYOUTS = {
+    "面试准备": {
+        "files": [
+            "00-总览.md",
+            "01-简历bullet逐条深挖.md",
+            "02-表达状态与自我介绍.md",
+            "99-面后复盘题库.md",
+        ],
+        "markers": {
+            "00-总览.md": ["轮次地图", "风险地图", "Bullet coverage"],
+            "01-简历bullet逐条深挖.md": ["Bullet", "追问", "证据"],
+            "02-表达状态与自我介绍.md": ["关键字卡", "项目逐字稿", "不会"],
+            "99-面后复盘题库.md": ["复盘", "题库"],
+        },
+    },
+    "interview-prep": {
+        "files": [
+            "00-overview.md",
+            "01-resume-bullet-deep-dives.md",
+            "02-delivery-and-self-introduction.md",
+            "99-post-interview-review.md",
+        ],
+        "markers": {
+            "00-overview.md": [
+                "## Interview-stage map",
+                "## Risk map",
+                "## Resume-bullet coverage",
+            ],
+            "01-resume-bullet-deep-dives.md": [
+                "## Bullet inventory",
+                "## Deep dives",
+                "Likely follow-ups",
+                "Evidence boundary",
+            ],
+            "02-delivery-and-self-introduction.md": [
+                "## Keyword card",
+                "## Project walkthrough",
+                "## Honest boundary lines",
+            ],
+            "99-post-interview-review.md": [
+                "## Review template",
+                "## Question bank",
+            ],
+        },
+    },
+}
 
-REQUIRED_MARKERS = {
-    "00-总览.md": ["轮次地图", "风险地图", "Bullet coverage"],
-    "01-简历bullet逐条深挖.md": ["Bullet", "追问", "证据"],
-    "02-表达状态与自我介绍.md": ["关键字卡", "项目逐字稿", "不会"],
-    "99-面后复盘题库.md": ["复盘", "题库"],
+RESEARCH_LAYOUTS = {
+    "岗位调研.md": ["来源", "覆盖"],
+    "role-research.md": ["## Source coverage", "## Coverage gaps"],
 }
 
 
@@ -57,12 +103,15 @@ def check_banned_patterns(root: Path) -> list[str]:
 def check_interview_folder(folder: Path) -> tuple[list[str], list[str]]:
     failures: list[str] = []
     warnings: list[str] = []
+    layout = INTERVIEW_LAYOUTS[folder.name]
+    required_files = layout["files"]
+    required_markers = layout["markers"]
 
-    for filename in REQUIRED_INTERVIEW_FILES:
+    for filename in required_files:
         if not (folder / filename).exists():
             failures.append(f"{folder}: missing `{filename}`")
 
-    for filename, markers in REQUIRED_MARKERS.items():
+    for filename, markers in required_markers.items():
         path = folder / filename
         if not path.exists():
             continue
@@ -74,7 +123,7 @@ def check_interview_folder(folder: Path) -> tuple[list[str], list[str]]:
     round_files = sorted(
         p.name
         for p in folder.glob("*.md")
-        if p.name not in REQUIRED_INTERVIEW_FILES
+        if p.name not in required_files
     )
     bad_round_names = [
         name
@@ -95,7 +144,7 @@ def check_interview_folder(folder: Path) -> tuple[list[str], list[str]]:
 def check_research_file(path: Path) -> list[str]:
     warnings: list[str] = []
     text = read_text(path)
-    for marker in ["来源", "覆盖"]:
+    for marker in RESEARCH_LAYOUTS[path.name]:
         if marker not in text:
             warnings.append(f"{path}: research file may be missing source coverage")
             break
@@ -120,10 +169,12 @@ def main() -> int:
 
         failures.extend(check_banned_patterns(root))
 
-        interview_folders = [
-            p for p in root.rglob("面试准备") if p.is_dir()
-        ]
-        if root.name == "面试准备" and root.is_dir():
+        interview_folders = []
+        for folder_name in INTERVIEW_LAYOUTS:
+            interview_folders.extend(
+                p for p in root.rglob(folder_name) if p.is_dir()
+            )
+        if root.name in INTERVIEW_LAYOUTS and root.is_dir():
             interview_folders.append(root)
         seen = set()
         for folder in interview_folders:
@@ -134,8 +185,9 @@ def main() -> int:
             failures.extend(folder_failures)
             warnings.extend(folder_warnings)
 
-        for research in root.rglob("岗位调研.md"):
-            warnings.extend(check_research_file(research))
+        for filename in RESEARCH_LAYOUTS:
+            for research in root.rglob(filename):
+                warnings.extend(check_research_file(research))
 
     for warning in warnings:
         print(f"[WARN] {warning}")

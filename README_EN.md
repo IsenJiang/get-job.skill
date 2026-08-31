@@ -21,9 +21,6 @@
 
 ---
 
-> [!NOTE]
-> This release keeps its runtime instructions, generated filenames, and complete example folders in Simplified Chinese. This English README presents the workflow for an international audience; it is not yet a fully localized runtime.
-
 ## What It Does
 
 The hardest part of job searching is often that **your experience looks unrelated to the role you want**, or that **a polished resume falls apart as soon as an interviewer asks follow-up questions**. This skill handles the entire workflow, with every stage feeding the next:
@@ -46,7 +43,7 @@ An education major can target finance. A psychology major can move into AI. A hu
 
 ## Before & After
 
-The same candidate's resume, before and after. Not a single experience was fabricated; the existing background was simply translated into language the target role could understand.
+The same fictional candidate's resume, before and after. Both versions use one fixed fact baseline, and every claim in the tailored version maps back to a source-fact ID. No unsupported degree, date, GPA, honor, metric, deployment, or production claim is added.
 
 <table>
 <tr>
@@ -54,12 +51,12 @@ The same candidate's resume, before and after. Not a single experience was fabri
 <td width="50%" align="center"><b>✅ After</b><br/><sub>Positioning statement + pain point → product decision → demo-ready prototype + consistent professional formatting</sub></td>
 </tr>
 <tr>
-<td><img src="assets/en/resume-before.png" alt="Resume before tailoring" /></td>
+<td><img src="assets/resume-before.png" alt="Resume before tailoring" /></td>
 <td><img src="assets/en/resume-after.png" alt="Resume after tailoring" /></td>
 </tr>
 </table>
 
-> This before-and-after example is available in [`examples/文科投AICoding/`](examples/文科投AICoding/). All details have been generalized for demonstration.
+> Follow the complete evidence chain in [`examples/en/ai-product-prototyping/`](examples/en/ai-product-prototyping/): source facts → fictional composite JD and role research → before/after resume data → interview preparation.
 
 From there, the skill uses the tailored resume to generate **round-by-round, bullet-by-bullet interview preparation**:
 
@@ -67,9 +64,9 @@ From there, the skill uses the tailored resume to generate **round-by-round, bul
 <img src="assets/en/interview-prep.png" alt="Interview preparation example covering interview stages, bullet-by-bullet drills, delivery, self-introduction, core project walkthroughs, and a post-interview review question bank" width="78%" />
 </div>
 
-> The complete interview-preparation example is available in [`examples/文科投AICoding/`](examples/文科投AICoding/).
+> The complete interview-preparation set is available in [`examples/en/ai-product-prototyping/interview-prep/`](examples/en/ai-product-prototyping/interview-prep/).
 
-**That is what this skill does: it translates what you have already done without inventing experience, then prepares you to defend it when the interview gets specific.**
+**That is what this skill does: it translates what you have already done without inventing experience, then prepares you to explain it precisely when the interview gets specific.**
 
 ---
 
@@ -99,26 +96,29 @@ Before delivery, the skill runs its quality gates and coverage-matrix checks. If
 
 ## Example Deliverables
 
-Each folder under `examples/` represents **one complete delivery**, named after the target role and containing the full output. All details are fictionalized so no real personal background is identifiable.
+The English flagship is a complete US-English adaptation, not a line-by-line translation of a Chinese example. It uses a fixed fictional fact ledger so the resume and interview materials stay internally consistent. The additional China-market examples remain in Chinese and are labeled accordingly.
 
-| Example | Transition | What to look for |
-| ------- | ---------- | ---------------- |
-| [Humanities to AI Coding](examples/文科投AICoding/) | Humanities/Care → AI Coding | **Includes before-and-after resume screenshots plus interview preparation**, making the rewrite and formatting easy to understand at a glance |
-| [Humanities to Digital Operations](examples/文科生投运营/) | Humanities → Digital Operations | Translates student activities into operations capabilities |
-| [Nontraditional Background to AI Product](examples/非科班投AI产品/) | Nontraditional background → AI Product | Shows how to handle inflated resume claims in interviews without letting the story collapse |
+| Example | Market / language | What to look for |
+| ------- | ----------------- | ---------------- |
+| [Business/Communication → AI Product Prototyping](examples/en/ai-product-prototyping/) | United States / English | **Complete traceable example:** source-fact ledger, fictional composite JD, role research, before/after resume data, and six interview-preparation files |
+| [Humanities → Digital Operations](examples/文科生投运营/) | China / Chinese | China-market example that translates student activities into operations capabilities |
+| [Nontraditional Background → AI Product](examples/非科班投AI产品/) | China / Chinese | China-market example that audits unsupported claims, then removes, qualifies, or prepares transparent explanations for them |
 
-Inside each folder:
+Inside the English flagship:
 
 ```text
-文科生投运营/
-├── 岗位调研.md      # ① Role research produced with WebSearch
-├── 改后简历.md      # ② Tailored resume
-└── 面试准备/        # ③ Overview + preparation files for the actual interview stages
-    ├── 00-总览.md
-    ├── 01-简历bullet逐条深挖.md
-    ├── 02-表达状态与自我介绍.md
-    ├── 03-{confirmed-or-high-confidence-stage-name}.md
-    └── 99-面后复盘题库.md
+examples/en/ai-product-prototyping/
+├── source-facts.md
+├── role-research.md
+├── resume-before.json
+├── resume-after.json
+└── interview-prep/
+    ├── 00-overview.md
+    ├── 01-resume-bullet-deep-dives.md
+    ├── 02-delivery-and-self-introduction.md
+    ├── 03-ai-product-prototyping-resume-deep-dive.md
+    ├── 04-business-and-product-judgment.md
+    └── 99-post-interview-review.md
 ```
 
 ---
@@ -137,10 +137,14 @@ get-job/
 ├── scripts/
 │   ├── generate_resume.py        # Renders tailored content into a consistent `.docx` template
 │   ├── quality_check.py          # Scans public deliverables for structural issues and prohibited terms
-│   ├── sample_resume.json        # Sample input
-│   └── README.md                 # Script documentation
+│   ├── sample_resume.json        # Chinese sample input
+│   ├── sample_resume.en.json     # English sample input
+│   ├── test_scripts.py           # Chinese/English regression tests
+│   ├── README.md                 # Chinese script documentation
+│   └── README_EN.md              # English script documentation
 ├── assets/                       # README images
 └── examples/                     # Complete fictionalized deliverables
+    ├── en/ai-product-prototyping/
     ├── 文科投AICoding/
     ├── 文科生投运营/
     └── 非科班投AI产品/
@@ -174,6 +178,9 @@ The most common resume mistakes are **keyword stuffing** and **listing experienc
 ## Installation
 
 Built on the open [Agent Skills specification](https://agentskills.io), this skill runs in compatible runtimes including Claude Code, Codex, Cursor, and OpenClaw.
+
+> [!NOTE]
+> The English README, flagship example, resume sample, and English resume-rendering labels are localized. The core runtime instructions and reference playbooks remain primarily in Simplified Chinese, so the workflow currently keeps its original output filenames: `岗位调研.md`, `改后简历.docx`, and `面试准备/`.
 
 **Option 1: One command (recommended)**
 
