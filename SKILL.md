@@ -127,7 +127,7 @@ description: |
 |------|-------------|---------------|---------------|
 | 中国大陆 | 公司官网、校招/社招官网、BOSS 直聘、拉勾、猎聘、前程无忧、智联招聘 | 牛客、脉脉、小红书、看准、offershow | 公司官网、公众号/新闻稿、36氪/晚点/行业报告 |
 | 美国 | Company careers、Greenhouse、Lever、LinkedIn Jobs、Indeed | Glassdoor、Blind、Reddit、Levels.fyi、校友/用户提供面经 | 公司官网、产品文档、SEC/投资者材料、TechCrunch/主流媒体 |
-| 其他市场 | 公司官网 + 当地头部 job board + LinkedIn | 当地论坛/Glassdoor/校友面经/用户提供材料 | 公司官网、当地媒体、行业报告 |
+| 韩国 | 公司官网、잡코리아、게임잡、사람인、LinkedIn | 当地论坛/Glassdoor/校友面经/用户提供材料 | 公司官网、当地媒体、行业报告 |
 
 搜这几个维度：
 - **核心能力关键词（3-5 个）**：从 JD、招聘页反推这个岗位真正考的能力 → 这是简历要对齐的靶心
